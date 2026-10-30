@@ -1,6 +1,5 @@
+from datetime import date, datetime, timedelta
 from decimal import Decimal
-from datetime import datetime, date, timedelta
- 
 
 DATE_FORMAT = '%Y-%m-%d'
 

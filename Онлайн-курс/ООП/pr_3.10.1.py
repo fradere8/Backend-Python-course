@@ -1,6 +1,7 @@
 # Импортируйте необходимые модули.
 from datetime import datetime
 
+
 def validate_record(name: str, birthdate: str) -> bool:
     # Напишите код, верните булево значение.
     try:
