@@ -1,5 +1,4 @@
 import datetime
-from operator import index
 
 
 class Product:
