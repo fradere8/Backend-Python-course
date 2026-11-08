@@ -4,7 +4,7 @@ class Employee:
         self.salary = salary
         
     def get_salary(self):
-        ''' Возвращает базовую зарплату сотрудника '''
+        """ Возвращает базовую зарплату сотрудника """
         return self.salary
         
 class Manager(Employee):
@@ -13,7 +13,7 @@ class Manager(Employee):
         self.bonus = bonus
         
     def get_salary(self):
-        ''' Возвращает зарплату менеджера с учётом бонуса '''
+        """ Возвращает зарплату менеджера с учётом бонуса """
         return self.salary + self.bonus
     
 class Developer(Employee):
@@ -22,7 +22,7 @@ class Developer(Employee):
         self.program_language = program_language
         
     def get_salary(self):
-        ''' Вовзращает зарплату разработчика с учетом премии за язык программирования '''
+        """ Вовзращает зарплату разработчика с учетом премии за язык программирования """
         if self.program_language == 'Python':
             return self.salary + 5000
         elif self.program_language == 'Java':
