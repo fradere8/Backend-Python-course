@@ -3,18 +3,25 @@ from decimal import Decimal
 
 DATE_FORMAT = '%Y-%m-%d'
 
+
 def add(items, title, amount, expiration_date=None):
+    """Добавляет товар в словарь items с указанием количества и срока годности."""
     amount_d = Decimal(str(amount))
     if expiration_date is not None:
         expiration_date = datetime.strptime(expiration_date, DATE_FORMAT).date()
 
     if title in items:
-        items[title].append({'amount': amount_d, 'expiration_date': expiration_date})
+        items[title].append(
+            {'amount': amount_d, 'expiration_date': expiration_date}
+        )
     else:
-        items[title] = [{'amount': amount_d, 'expiration_date': expiration_date}]
+        items[title] = [
+            {'amount': amount_d, 'expiration_date': expiration_date}
+        ]
 
 
 def add_by_note(items, note):
+    """Добавляет товар на основе текстовой заметки (название, количество, дата)."""
     note_str = note.split(' ')
     am_n = None
     name_n = None
@@ -27,9 +34,10 @@ def add_by_note(items, note):
         am_n = Decimal(note_str[-1])
         name_n = ' '.join(note_str[:-1])
         add(items, name_n, am_n)
-    
+
 
 def find(items, needle):
+    """Возвращает список названий товаров, содержащих подстроку needle."""
     result = []
     for k in items:
         if needle.lower() in k.lower():
@@ -38,6 +46,7 @@ def find(items, needle):
 
 
 def get_amount(items, needle):
+    """Считает общее количество товаров, найденных по подстроке needle."""
     product_amount = Decimal(0)
     items_by_needle = find(items, needle)
     for i in items_by_needle:
@@ -47,6 +56,7 @@ def get_amount(items, needle):
 
 
 def get_expired(items, in_advance_days=0):
+    """Находит просроченные товары с учетом запаса дней in_advance_days."""
     current_date = date.today()
     exp_d = current_date + timedelta(days=in_advance_days)
     result = []
